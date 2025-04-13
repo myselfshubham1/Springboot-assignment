@@ -3,11 +3,11 @@ package io.github.myselfshubham1.spring_boot_assignment.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
-public class Blog_Post {
-    @Entity
-    public class BlogPost {
+
+@Entity
+    @Table(name="blogs")
+    public class Blog {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,22 +16,19 @@ public class Blog_Post {
         private String title;
 
         @Column(columnDefinition = "TEXT")
-        private String content;
-
-        private boolean published;
+        private String description;
 
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
 
-        public BlogPost() {
+        public Blog() {
         }
 
-        public BlogPost(LocalDateTime createdAt, long id, String title, String content, boolean published, LocalDateTime updatedAt) {
+        public Blog(LocalDateTime createdAt, long id, String title, String description, boolean published, LocalDateTime updatedAt) {
             this.createdAt = createdAt;
             this.id = id;
             this.title = title;
-            this.content = content;
-            this.published = published;
+            this.description = description;
             this.updatedAt = updatedAt;
         }
 
@@ -51,21 +48,14 @@ public class Blog_Post {
             this.title = title;
         }
 
-        public String getContent() {
-            return content;
+        public String getDescription() {
+            return description;
         }
 
-        public void setContent(String content) {
-            this.content = content;
+        public void setDescription(String description) {
+            this.description = description;
         }
 
-        public boolean isPublished() {
-            return published;
-        }
-
-        public void setPublished(boolean published) {
-            this.published = published;
-        }
 
         public LocalDateTime getCreatedAt() {
             return createdAt;
@@ -82,6 +72,17 @@ public class Blog_Post {
         public void setUpdatedAt(LocalDateTime updatedAt) {
             this.updatedAt = updatedAt;
         }
+
+        @Override
+        public String toString() {
+            return "Blog_Post{" +
+                    "id=" + id +
+                    ", title='" + title + '\'' +
+                    ", content='" + description + '\'' +
+                    ", createdAt=" + createdAt +
+                    ", updatedAt=" + updatedAt +
+                    '}';
+        }
     }
 
-}
+
