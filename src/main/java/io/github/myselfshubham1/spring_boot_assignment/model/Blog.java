@@ -39,9 +39,8 @@ import java.util.Objects;
         public Blog() {
         }
 
-        public Blog(LocalDateTime createdAt, long id, String title, String description, boolean published, LocalDateTime updatedAt) {
+        public Blog(LocalDateTime createdAt, String title, String description, LocalDateTime updatedAt) {
             this.createdAt = createdAt;
-            this.id = id;
             this.title = title;
             this.description = description;
             this.updatedAt = updatedAt;
@@ -52,10 +51,6 @@ import java.util.Objects;
 
     public long getId() {
             return id;
-        }
-
-        public void setId(long id) {
-            this.id = id;
         }
 
         public String getTitle() {
