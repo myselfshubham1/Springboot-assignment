@@ -1,6 +1,6 @@
 package io.github.myselfshubham1.spring_boot_assignment.user.repository;
 
-import io.github.siddharthtrips95.userspring.user.model.User;
+import io.github.myselfshubham1.spring_boot_assignment.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

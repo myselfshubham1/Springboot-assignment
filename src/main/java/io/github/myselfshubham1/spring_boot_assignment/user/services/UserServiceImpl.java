@@ -1,7 +1,7 @@
 package io.github.myselfshubham1.spring_boot_assignment.user.services;
 
-import io.github.siddharthtrips95.userspring.user.model.User;
-import io.github.siddharthtrips95.userspring.user.repository.UserRepository;
+import io.github.myselfshubham1.spring_boot_assignment.user.model.User;
+import io.github.myselfshubham1.spring_boot_assignment.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

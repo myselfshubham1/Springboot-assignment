@@ -1,6 +1,6 @@
 package io.github.myselfshubham1.spring_boot_assignment.user.services;
 
-import io.github.siddharthtrips95.userspring.user.model.User;
+import io.github.myselfshubham1.spring_boot_assignment.user.model.User;
 
 import java.util.List;
 

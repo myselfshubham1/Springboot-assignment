@@ -1,7 +1,7 @@
 package io.github.myselfshubham1.spring_boot_assignment.user.controller;
 
-import io.github.siddharthtrips95.userspring.user.model.User;
-import io.github.siddharthtrips95.userspring.user.services.UserService;
+import io.github.myselfshubham1.spring_boot_assignment.user.model.User;
+import io.github.myselfshubham1.spring_boot_assignment.user.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
