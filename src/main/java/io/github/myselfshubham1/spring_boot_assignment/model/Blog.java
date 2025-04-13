@@ -47,7 +47,10 @@ import java.util.Objects;
             this.updatedAt = updatedAt;
         }
 
-        public long getId() {
+    public Blog(long l, String title, String content) {
+    }
+
+    public long getId() {
             return id;
         }
 
