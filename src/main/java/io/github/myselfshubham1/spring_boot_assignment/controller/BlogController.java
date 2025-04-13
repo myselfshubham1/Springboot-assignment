@@ -50,6 +50,12 @@ public class BlogController {
         return ResponseEntity.ok(blogService.getAllBlogs());
     }
 
+    @PutMapping("/updatedesciption")
+    public ResponseEntity<Blog> updateBlogDescription(@PathVariable Long id, @RequestBody String newDescription) {
+        Blog updatedBlog = blogService.updateBlogDescription(id, newDescription);
+        return ResponseEntity.ok(updatedBlog);
+    }
+
     //  Delete a blog post
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteBlog(@PathVariable Long id) {
