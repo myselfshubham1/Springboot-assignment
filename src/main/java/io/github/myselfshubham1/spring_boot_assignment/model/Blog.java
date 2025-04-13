@@ -79,7 +79,7 @@ import java.util.Objects;
         }
 
         public LocalDateTime getUpdatedAt() {
-            return updatedAt;
+            return LocalDateTime.now();
         }
 
         public void setUpdatedAt(LocalDateTime updatedAt) {

@@ -33,7 +33,7 @@ public class BlogController {
 
     //  Update an existing blog post
     @PutMapping("/{id}")
-    public ResponseEntity<Blog> updateBlog(@PathVariable Long id, @RequestBody String blog) {
+    public ResponseEntity<Blog> updateBlog(@PathVariable Long id, @RequestBody Blog blog) {
         Blog updated = blogService.updateBlog(id, blog);
         return ResponseEntity.ok(updated);
     }
@@ -51,11 +51,6 @@ public class BlogController {
         return ResponseEntity.ok(blogService.getAllBlogs());
     }
 
-    @PutMapping("/updatedesciption")
-    public ResponseEntity<Blog> updateBlogDescription(@PathVariable Long id, @RequestBody String newDescription) {
-        Blog updatedBlog = blogService.updateBlogDescription(id, newDescription);
-        return ResponseEntity.ok(updatedBlog);
-    }
 
     //  Delete a blog post
     @DeleteMapping("/{id}")

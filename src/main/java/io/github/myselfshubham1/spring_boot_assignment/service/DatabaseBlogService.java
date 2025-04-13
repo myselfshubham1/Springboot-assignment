@@ -1,5 +1,6 @@
 package io.github.myselfshubham1.spring_boot_assignment.service;
 
+import io.github.myselfshubham1.spring_boot_assignment.exceptions.ProductNotFoundException;
 import io.github.myselfshubham1.spring_boot_assignment.model.Blog;
 import io.github.myselfshubham1.spring_boot_assignment.repository.BlogRepository;
 import org.springframework.stereotype.Service;
@@ -35,20 +36,20 @@ public class DatabaseBlogService implements BlogService {
 
 
     @Override
-    public Blog updateBlog(long id, String name) {
-        Blog blog = getBlogById(id);  // Retrieve the blog by ID
-        blog.setTitle(name);  // Update the title
-        blog.setUpdatedAt(LocalDateTime.now());  // Update the updated timestamp
-        return blogRepository.save(blog);
+    public Blog updateBlog(long id, Blog blog) {
+
+        if (blog.getId() != id) {
+            throw new ProductNotFoundException("Product not found with ID: " + id);
+        }
+        Blog updatedBlog = blogRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException("Blog with id " + id + " not found"));
+
+        updatedBlog.setTitle(updatedBlog.getTitle());
+        updatedBlog.setDescription(updatedBlog.getDescription());
+        updatedBlog.setUpdatedAt(updatedBlog.getUpdatedAt());
+        return blogRepository.save(updatedBlog);
     }
 
-    @Override
-    public Blog updateBlogDescription(long id, String newDescription) {
-        Blog blog = getBlogById(id);  // Retrieve the blog by ID
-        blog.setDescription(newDescription);  // Update the description
-        blog.setUpdatedAt(LocalDateTime.now());  // Update the updated timestamp
-        return blogRepository.save(blog);
-    }
 
     @Override
     public boolean deleteBlog(long id) {
