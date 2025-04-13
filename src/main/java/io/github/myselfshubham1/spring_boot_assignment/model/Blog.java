@@ -1,8 +1,11 @@
 package io.github.myselfshubham1.spring_boot_assignment.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 
 @Entity
@@ -13,12 +16,19 @@ import java.time.LocalDateTime;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
 
+        @NotBlank(message = "blog's title is missing ")
+        @Size(min = 3, max = 50, message = "blog title should be at least of 3 characters and maximum of 50 ")
+        @Column(nullable = false)
         private String title;
 
-        @Column(columnDefinition = "TEXT")
+        @NotBlank(message= "description can't be null")
+        @Size(min = 10,max=1000,message = "description should be in 10 to 1000 characters")
+        @Column(nullable = false)
         private String description;
 
+        @Column
         private LocalDateTime createdAt;
+        @Column
         private LocalDateTime updatedAt;
 
         public Blog() {
@@ -73,7 +83,19 @@ import java.time.LocalDateTime;
             this.updatedAt = updatedAt;
         }
 
-        @Override
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Blog blog = (Blog) o;
+        return id == blog.id && Objects.equals(title, blog.title) && Objects.equals(description, blog.description) && Objects.equals(createdAt, blog.createdAt) && Objects.equals(updatedAt, blog.updatedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, description, createdAt, updatedAt);
+    }
+
+    @Override
         public String toString() {
             return "Blog_Post{" +
                     "id=" + id +

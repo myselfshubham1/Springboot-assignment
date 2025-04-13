@@ -11,9 +11,7 @@ public interface BlogService {
 
     Blog getBlogById(long id) ;
 
-    Blog getBlogByName(String name) ;
-
-    Blog updateBlog(long id, double newPrice) ;
+    Blog updateBlog(long id, String name) ;
 
     Blog updateBlogDescription(long id, String newDescription) ;
 
