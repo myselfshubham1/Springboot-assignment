@@ -3,6 +3,8 @@ package io.github.myselfshubham1.spring_boot_assignment.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -27,8 +29,11 @@ import java.util.Objects;
         private String description;
 
         @Column
+        @CreationTimestamp
         private LocalDateTime createdAt;
+
         @Column
+        @UpdateTimestamp
         private LocalDateTime updatedAt;
 
         public Blog() {
