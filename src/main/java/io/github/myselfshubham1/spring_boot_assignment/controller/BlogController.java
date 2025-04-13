@@ -4,6 +4,7 @@ package io.github.myselfshubham1.spring_boot_assignment.controller;
 import io.github.myselfshubham1.spring_boot_assignment.model.Blog;
 import io.github.myselfshubham1.spring_boot_assignment.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,7 +64,7 @@ public class BlogController {
             blogService.deleteBlog(id);
             return ResponseEntity.ok("Blog post deleted successfully.");
         }
-        return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Blog not found with  id ");
     }
 
 }
