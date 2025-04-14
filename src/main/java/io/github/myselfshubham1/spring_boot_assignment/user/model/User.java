@@ -10,15 +10,28 @@ import java.util.Objects;
 @Table(name = "users")
 public class User {
 
+    /**
+     * Auto generated private key as ID
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * field for username
+     */
     @NotBlank(message = "Username is required")
     private String username;
 
+    /**
+     * field for password
+     */
     @NotBlank(message = "Password is required")
     private String password;
+
+    /**
+     * field for email
+     */
 
     @Email(message = "Invalid email format")
     @NotBlank(message = "Email is required")
@@ -26,8 +39,10 @@ public class User {
 
     private boolean active = true;
 
-    // Constructors, Getters and Setters
 
+    /**
+     * constructor
+     */
 
     public User(boolean active, String email, Long id, String password, String username) {
         this.active = active;
@@ -37,10 +52,16 @@ public class User {
         this.username = username;
     }
 
+    /**
+     * blank constructor
+     */
     public User() {
 
     }
 
+    /**
+     * getter and setter
+     */
     public boolean isActive() {
         return active;
     }
@@ -81,6 +102,9 @@ public class User {
         this.username = username;
     }
 
+    /**
+     * equals part
+     */
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -88,11 +112,17 @@ public class User {
         return active == user.active && Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(email, user.email);
     }
 
+    /**
+     * hashcode part
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id, username, password, email, active);
     }
 
+    /**
+     * to -string part
+     */
     @Override
     public String toString() {
         return "User{" +
