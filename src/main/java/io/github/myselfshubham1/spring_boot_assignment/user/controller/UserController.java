@@ -19,10 +19,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    public UserController(@Qualifier("databaseProductService")UserService userService) {
-//        this.userService = userService;
-//    }
-
     @PostMapping
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         return ResponseEntity.ok(userService.createUser(user));
