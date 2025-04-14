@@ -14,31 +14,38 @@ import java.util.Objects;
     @Table(name="blogs")
     public class Blog {
 
+    //Auto generated private key as ID
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private long id;
 
+        //field for title
         @NotBlank(message = "blog's title is missing ")
         @Size(min = 3, max = 50, message = "blog title should be at least of 3 characters and maximum of 50 ")
         @Column(nullable = false)
         private String title;
 
+        //field for description
         @NotBlank(message= "description can't be null")
         @Size(min = 10,max=1000,message = "description should be in 10 to 1000 characters")
         @Column(nullable = false)
         private String description;
 
+        //field for time at what we create
         @Column
         @CreationTimestamp
         private LocalDateTime createdAt;
 
+        //field for time at what we updated
         @Column
         @UpdateTimestamp
         private LocalDateTime updatedAt;
 
+        //blank constructor
         public Blog() {
         }
 
+        //constructor
         public Blog(LocalDateTime createdAt, String title, String description, LocalDateTime updatedAt) {
             this.createdAt = createdAt;
             this.title = title;
@@ -46,6 +53,7 @@ import java.util.Objects;
             this.updatedAt = updatedAt;
         }
 
+        //getter and setter
     public Blog(long l, String title, String content) {
     }
 
@@ -86,6 +94,7 @@ import java.util.Objects;
             this.updatedAt = updatedAt;
         }
 
+        // equals part
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
@@ -93,11 +102,13 @@ import java.util.Objects;
         return id == blog.id && Objects.equals(title, blog.title) && Objects.equals(description, blog.description) && Objects.equals(createdAt, blog.createdAt) && Objects.equals(updatedAt, blog.updatedAt);
     }
 
+    //hashcode part
     @Override
     public int hashCode() {
         return Objects.hash(id, title, description, createdAt, updatedAt);
     }
 
+    //to -string part
     @Override
         public String toString() {
             return "Blog_Post{" +
