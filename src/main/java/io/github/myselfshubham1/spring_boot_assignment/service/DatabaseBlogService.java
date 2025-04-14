@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-//implemenatation of blog service
+/**
+ * implementation of blog service
+ */
+
+
 @Service
 public class DatabaseBlogService implements BlogService {
 
@@ -22,26 +26,38 @@ public class DatabaseBlogService implements BlogService {
         this.blogRepository = blogRepository;
     }
 
+    /**
+     * full body function to create blog
+     */
 
-    //full body function to create blog
     @Override
     public Blog createBlog(Blog blog) {
         return blogRepository.save(blog);    }
 
-    //full body function to get all  blogs
+    /**
+     * full body function to get all  blogs
+     */
+
     @Override
     public List<Blog> getAllBlogs() {
         return blogRepository.findAll();
     }
 
-    //full body function to get blog by ID
+    /**
+     * full body function to get blog by ID
+     */
+
     @Override
     public Blog getBlogById(long id) {
         return blogRepository.findById(id).orElseThrow(() -> new RuntimeException("Blog not found with ID: " + id));  // Throw exception if not found
     }
 
 
-    //  //full body function to update  blog
+    /**
+     * full body function to update  blog
+     */
+
+
 
     @Override
     public Blog updateBlog(long id, Blog blog) {
@@ -59,7 +75,11 @@ public class DatabaseBlogService implements BlogService {
         return blogRepository.save(updatedBlog);
     }
 
-    //full body function to delete blog
+    /**
+     * full body function to delete blog
+     */
+
+
     @Override
     public boolean deleteBlog(long id) {
         if (blogRepository.existsById(id)) {

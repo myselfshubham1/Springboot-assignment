@@ -6,7 +6,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-// uses to implement jpa so that we can use functions like save , findbyid, findby etc.
+/**
+ * uses to implement jpa so that we can use functions like save , findbyid, findby etc.
+ */
+
 @Repository
 public interface BlogRepository extends JpaRepository<Blog, Long> {
 

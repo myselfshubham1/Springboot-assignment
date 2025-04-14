@@ -7,18 +7,34 @@ import java.util.List;
 
 @Service
 public interface BlogService {
-  //function  for creating blog
+  /**
+   * function  for creating blog
+   */
+
+
   Blog createBlog(Blog blog) ;
 
-  //function to store all blogs
+  /**
+   * function to store all blogs
+   */
+
+
     List<Blog> getAllBlogs() ;
+  /**
+   * function to get blog by ID
+   */
 
-    //function to get blog by ID
     Blog getBlogById(long id) ;
+  /**
+   * function to update blog
+   */
 
-    //function to update blog
+
     Blog updateBlog(long id, Blog blog) ;
+  /**
+   * function to delete and check it is deleted or not
+   */
 
-    //function to delte and check it is deleted or not
+
     boolean deleteBlog(long id) ;
 }

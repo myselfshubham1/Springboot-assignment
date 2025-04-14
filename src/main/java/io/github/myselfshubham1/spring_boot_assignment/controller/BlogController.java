@@ -11,49 +11,62 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/api/blogs")
 public class BlogController {
 
     @Autowired
     public  BlogService blogService;
 
+    /**
+     * constructor fir BlogController
+     */
 
-
-    //constructor
     @Autowired
     public BlogController( BlogService blogService) {
         this.blogService = blogService;
     }
 
-    // creating a new blog
+    /**
+     * creating a new blog
+     */
+
     @PostMapping("/create/blog")
     public ResponseEntity<Blog> createBlog(@RequestBody Blog blog) {
         Blog createBlog = blogService.createBlog(blog);
         return ResponseEntity.ok(createBlog);
     }
 
-    // updating new blog
+    /**
+     *  updating new blog
+     */
     @PutMapping("/{id}")
     public ResponseEntity<Blog> updateBlog(@PathVariable Long id, @RequestBody Blog blog) {
         Blog updated = blogService.updateBlog(id, blog);
         return ResponseEntity.ok(updated);
     }
 
-    //  Get a blog  by its ID
+    /**
+     * Get a blog  by its ID
+     */
+
     @GetMapping("/{id}")
     public ResponseEntity<Blog> getBlogById(@PathVariable Long id) {
         Blog post = blogService.getBlogById(id);
         return ResponseEntity.ok(post);
     }
 
-    //  Get all blogs
+    /**
+     * Get all blogs
+     */
+
     @GetMapping("/all")
     public ResponseEntity<List<Blog>> getAllBlogs() {
         return ResponseEntity.ok(blogService.getAllBlogs());
     }
 
+    /**
+     * Delete a blog post by id
+     */
 
-    //  Delete a blog post by id
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteBlog(@PathVariable Long id) {
         if (blogService.getBlogById(id) == null) {
